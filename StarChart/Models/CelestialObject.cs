@@ -22,5 +22,24 @@ namespace StarChart.Models
             get;
             set;
         }
+        public int?  OrbitedObjectId
+
+        {
+            get;
+            set;
+        }
+        [NotMapped]public List<CelestialObject> OSatellites
+
+        {
+            get;
+            set;
+        }
+        public TimeSpan OrbitalPeriod
+
+        {
+            get;
+            set;
+        }
+
     }
 }
