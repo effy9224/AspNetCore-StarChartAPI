@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace StarChart.Models
 {
@@ -14,7 +16,8 @@ namespace StarChart.Models
             get ;
             set ;
         }
-        public string Name
+
+        [Required]public string Name
         {
             get;
             set;
