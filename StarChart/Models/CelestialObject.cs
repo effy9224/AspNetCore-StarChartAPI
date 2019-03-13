@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations
 
 namespace StarChart.Models
 {
     public class CelestialObject
     {
-        public int ID
+        public int Id
+
         {
             get ;
             set ;
+        }
+        public string Name
+        {
+            get;
+            set;
         }
     }
 }
