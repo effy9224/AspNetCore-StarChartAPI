@@ -15,10 +15,10 @@ namespace StarChart.Controllers
         private readonly ApplicationDbContext _context;
         public CelestialObjectController(ApplicationDbContext applicationDbContext)
         { _context = applicationDbContext; }
-        [HttpGet("{id:int}",Name="GetById")]
+        [HttpGet("{id:int}", Name = "GetById")]
         public IActionResult GetById(int id)
         {
-        var celestialObject = _context.CelestialObjects.Find(id);
+            var celestialObject = _context.CelestialObjects.Find(id);
             if (celestialObject == null)
                 return NotFound();
             celestialObject.Satellites = _context.CelestialObjects.Where(e => e.OrbitedObjectId == id).ToList();
@@ -29,10 +29,10 @@ namespace StarChart.Controllers
         public IActionResult GetByName(string name)
         {
             var celestialObjects = _context.CelestialObjects.Where(e => e.Name == name).ToList();
-            if(!celestialObjects.Any())
-            return NotFound();
-            foreach(var celestialObject in celestialObjects)
-            {celestialObject.Satellites = _context.CelestialObjects.Where(e => e.OrbitedObjectId==celestialObject.Id).ToList();}
+            if (!celestialObjects.Any())
+                return NotFound();
+            foreach (var celestialObject in celestialObjects)
+            { celestialObject.Satellites = _context.CelestialObjects.Where(e => e.OrbitedObjectId == celestialObject.Id).ToList(); }
             return Ok(celestialObjects);
             /*var celestialObject= _context.CelestialObjects.Find(name);
 
@@ -47,12 +47,12 @@ namespace StarChart.Controllers
             var celestialObjects = _context.CelestialObjects.ToList();
             foreach (var CelestialObject in celestialObjects)
                 CelestialObject.Satellites = celestialObjects.Where(e => e.OrbitedObjectId == CelestialObject.Id).ToList();
-        
+
 
             return Ok(celestialObjects);
 
         }
-        [HttpPut("{id}")]
+        [HttpPost]
         public IActionResult Create([FromBody]CelestialObject celestialObject)
         {
             _context.CelestialObjects.Add(celestialObject);
@@ -60,7 +60,7 @@ namespace StarChart.Controllers
             return CreatedAtRoute("GetById", new { id = celestialObject.Id }, celestialObject);
         }
 
-        [HttpPost]
+        [HttpPut("{id}")]
         public IActionResult Update(int id, CelestialObject celestialObject)
             
         {
