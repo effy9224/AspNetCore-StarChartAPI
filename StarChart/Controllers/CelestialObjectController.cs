@@ -14,7 +14,7 @@ namespace StarChart.Controllers
         private readonly ApplicationDbContext _context;
         public CelestialObjectController(ApplicationDbContext applicationDbContext)
         { _context = applicationDbContext; }
-        [HttpGet("{id;int}",Name="GetById")]
+        [HttpGet("{id:int}",Name="GetById")]
         public IActionResult GetById(int id)
         {
         var celestialObject = _context.CelestialObjects.Find(id);
@@ -24,7 +24,7 @@ namespace StarChart.Controllers
             return Ok(celestialObject);
         }
 
-        [HttpGet("name")]
+        [HttpGet("{name}")]
         public IActionResult GetByName(string name)
         {
             var celestialObject = _context.CelestialObjects.Find(name);
