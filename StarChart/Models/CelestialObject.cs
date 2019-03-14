@@ -28,7 +28,7 @@ namespace StarChart.Models
             get;
             set;
         }
-        [NotMapped]public List<CelestialObject> OSatellites
+        [NotMapped]public List<CelestialObject> Satellites
 
         {
             get;
